@@ -47,9 +47,11 @@ export function prepareContactPage(contactForm: ContactForm): ContactPage {
 }
 
 function prepareInput(
-  input: CheckboxBasic | Radio | Select | Textfield
+  input: CheckboxBasic
 ): FormInput {
-  const { control, ...options } = input;
+  const { control, element_options: {helper_text_hint}, ...options } = input;
+  const { helper_text_hint, ...rest } = element_options;
+  const newHelperText = helper_text_hint ? <Tooltip arrow title={helper_text_hint}>{options.helper_text}</Tooltip> : options.helper_text;
   const preparedOptions: Record<string, unknown> = {};
   const inputKeys = Object.keys(options);
   inputKeys.forEach((inputKey) => {
@@ -57,5 +59,6 @@ function prepareInput(
     const newKey = fromSnakeToCamel(key);
     preparedOptions[newKey] = options[key];
   });
+  preparedOptions.helperText = newHelperText;
   return { control, options: preparedOptions };
 }

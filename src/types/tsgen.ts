@@ -30,6 +30,11 @@ export interface Link {
 }
 
 export interface CheckboxBasic {
+  element_options?: {
+     /** Helper text */
+   helper_text?: string;
+   helper_text_hint?: string;
+  }
   /** Label */
   label?: string;
   /** Name */
@@ -94,8 +99,11 @@ export interface Textfield {
     | 'url';
   /** Required */
   required?: boolean;
+  element_options?: {
   /** Helper text */
   helper_text?: string;
+  helper_text_hint?: string;
+  }
   /** Placeholder */
   placeholder?: string;
   /** Multiline */
@@ -125,6 +133,7 @@ export interface TextField {
     full_width?: boolean;
     /** Helper text */
     helper_text?: string;
+    helper_text_hint?: string;
     /** Margin */
     margin?: 'dense' | 'none';
     /** Max rows */
@@ -182,6 +191,8 @@ export interface Select {
     display_empty?: boolean;
     /** Full width */
     full_width?: boolean;
+    helper_text?: string;
+    helper_text_hint?: string;
     /** Label ID */
     label_id?: string;
     /** Multiple */
@@ -213,6 +224,9 @@ export interface Radio {
       | 'warning';
     /** Disabled */
     disabled?: boolean;
+     /** Helper text */
+    helper_text?: string;
+    helper_text_hint?: string;
     /** Label placement */
     label_placement?: 'bottom' | 'end' | 'start' | 'top';
     /** Required */
